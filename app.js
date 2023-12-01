@@ -29,25 +29,27 @@ app.post('/razorpay/callback/', (req, res) => {
     console.log('Razorpay Callback:', body);
 
     try {
-        // Extract relevant details from the request body
-        const orderId = body.payload.order.entity.id;
-        const paymentId = body.payload.payment.entity.id;
-        const signature = body.payload.payment.entity.signature;
+        console.log(body.payload.order.entity);
+        console.log(body.payload.payment.entity);
+        // // Extract relevant details from the request body
+        // const orderId = body.payload.order.entity.id;
+        // const paymentId = body.payload.payment.entity.id;
+        // const signature = body.payload.payment.entity.signature;
 
-        // Additional details based on your requirements
-        const amountPaid = body.payload.payment.entity.amount;
-        const currency = body.payload.payment.entity.currency;
-        const status = body.payload.payment.entity.status;
+        // // Additional details based on your requirements
+        // const amountPaid = body.payload.payment.entity.amount;
+        // const currency = body.payload.payment.entity.currency;
+        // const status = body.payload.payment.entity.status;
 
-        // Process the payment confirmation as needed
-        // For example, save the details to your database, update order status, etc.
+        // // Process the payment confirmation as needed
+        // // For example, save the details to your database, update order status, etc.
 
-        console.log('Order ID:', orderId);
-        console.log('Payment ID:', paymentId);
-        console.log('Signature:', signature);
-        console.log('Amount Paid:', amountPaid);
-        console.log('Currency:', currency);
-        console.log('Payment Status:', status);
+        // console.log('Order ID:', orderId);
+        // console.log('Payment ID:', paymentId);
+        // console.log('Signature:', signature);
+        // console.log('Amount Paid:', amountPaid);
+        // console.log('Currency:', currency);
+        // console.log('Payment Status:', status);
 
         // Respond to Razorpay to acknowledge receipt
         res.json({ status: 'success' });
