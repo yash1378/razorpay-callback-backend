@@ -21,15 +21,40 @@ app.get('/', (req, res) => {
     console.log("Hello world");
 });
 // Callback endpoint for successful payments
+
 app.post('/razorpay/callback/', (req, res) => {
     const body = req.body;
 
-    // Log the request body
+    // Log the entire request body
     console.log('Razorpay Callback:', body);
 
-    // Process the payment confirmation as needed
+    try {
+        // Extract relevant details from the request body
+        const orderId = body.payload.order.entity.id;
+        const paymentId = body.payload.payment.entity.id;
+        const signature = body.payload.payment.entity.signature;
 
-    res.json({ status: 'success' }); // Respond to Razorpay to acknowledge receipt
+        // Additional details based on your requirements
+        const amountPaid = body.payload.payment.entity.amount;
+        const currency = body.payload.payment.entity.currency;
+        const status = body.payload.payment.entity.status;
+
+        // Process the payment confirmation as needed
+        // For example, save the details to your database, update order status, etc.
+
+        console.log('Order ID:', orderId);
+        console.log('Payment ID:', paymentId);
+        console.log('Signature:', signature);
+        console.log('Amount Paid:', amountPaid);
+        console.log('Currency:', currency);
+        console.log('Payment Status:', status);
+
+        // Respond to Razorpay to acknowledge receipt
+        res.json({ status: 'success' });
+    } catch (error) {
+        console.error('Error processing Razorpay callback:', error);
+        res.status(500).json({ status: 'error', message: 'Error processing callback' });
+    }
 });
 
 
