@@ -18,6 +18,7 @@ app.use(cors({ origin: '*' }));  // Allow requests from any origin
 // Define a route
 app.get('/', (req, res) => {
     res.send('Hello ');
+    console.log("Hello world");
 });
 // Callback endpoint for successful payments
 app.post('/razorpay/callback/', (req, res) => {
