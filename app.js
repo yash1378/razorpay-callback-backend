@@ -29,7 +29,7 @@ app.post('/razorpay/callback/', (req, res) => {
     console.log('Razorpay Callback:', body);
 
     try {
-        console.log(body.payload.order.entity);
+        // console.log(body.payload.order.entity);
         console.log(body.payload.payment.entity);
         // // Extract relevant details from the request body
         // const orderId = body.payload.order.entity.id;
